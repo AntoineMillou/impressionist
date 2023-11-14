@@ -7,11 +7,7 @@ module ActiveRecord
       # FIX, why is this implementing rails behaviour?
       def self.next_migration_number(dirname)
         sleep 1
-        if ActiveRecord::Base.timestamped_migrations
-          Time.now.utc.strftime("%Y%m%d%H%M%S")
-        else
-          "%.3d" % (current_migration_number(dirname) + 1)
-        end
+        Time.now.utc.strftime("%Y%m%d%H%M%S")
       end
 
       def create_migration_file
